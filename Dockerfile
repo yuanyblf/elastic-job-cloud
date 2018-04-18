@@ -8,4 +8,4 @@ WORKDIR /app
 
 EXPOSE 8899
 
-CMD ["./bin/start.sh"]
+CMD ["bin/start.sh"]
