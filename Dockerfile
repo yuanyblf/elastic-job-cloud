@@ -8,4 +8,5 @@ RUN tar -xvf /app/*.tar.gz
 
 EXPOSE 8899
 
-CMD /app/elastic-job-cloud-scheduler-3.0.0.M1-SNAPSHOT/bin/start.sh
+CMD ["--registry=in_memory"]
+ENTRYPOINT ["mesos-master"]
