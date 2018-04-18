@@ -1,10 +1,11 @@
 FROM mesosphere/mesos:1.5.0
 
-COPY elastic-job-cloud-scheduler/target/*.tar.gz /tmp
+RUN mkdir -p /app
 
-RUN tar -xvf /tmp/*.tar.gz
-RUN mv elastic-job-cloud-scheduler-3.0.0.M1-SNAPSHOT /app
+COPY elastic-job-cloud-scheduler/target/*.tar.gz /app
+
+RUN tar -xvf /app/*.tar.gz
 
 EXPOSE 8899
 
-CMD /app/bin/start.sh
+CMD /app/elastic-job-cloud-scheduler-3.0.0.M1-SNAPSHOT/bin/start.sh
