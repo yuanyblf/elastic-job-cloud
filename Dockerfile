@@ -9,7 +9,6 @@ RUN apt-get install --assume-yes mesos python-software-properties curl default-j
 
 ## MARATHON ##
 COPY elastic-job-cloud-scheduler/target/*.tar.gz /tmp/app.tar.gz
-RUN mkdir -p /opt/marathon && tar xzf /tmp/marathon.tgz -C /opt/marathon --strip=1 && rm -f /tmp/marathon.tgz
 RUN mkdir -p /app && tar -xvf /tmp/app.tar.gz -C /app --strip=1 && rm -f /tmp/app.tar.gz
 RUN ls /app/
 EXPOSE 8899
