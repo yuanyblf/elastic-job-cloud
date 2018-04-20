@@ -15,4 +15,4 @@ EXPOSE 8899
 
 WORKDIR /opt/app
 
-ENTRYPOINT ["/opt/app/bin/dcos.js"]
+ENTRYPOINT ["/opt/app/bin/start.js"]
