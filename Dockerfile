@@ -8,12 +8,9 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF
 RUN apt-get update
 RUN apt-get install --assume-yes mesos python-software-properties curl default-jdk
 
-COPY elastic-job-cloud-scheduler/target/*.tar.gz /tmp/app.tar.gz
-RUN mkdir -p /opt/app
-RUN tar -xvf /tmp/app.tar.gz -C /opt/app --strip=1
+ADD elastic-job-cloud-scheduler/target/*.tar.gz /tmp/app.tar.gz
+RUN mkdir -p /opt/app && tar -xvf /tmp/app.tar.gz -C /opt/app --strip=1
 
 EXPOSE 8899
-
-#WORKDIR /opt/app
 
 ENTRYPOINT ["/opt/app/bin/dcos.sh"]
