@@ -13,6 +13,6 @@ RUN mkdir -p /opt/app && tar -xvf /tmp/app.tar.gz -C /opt/app --strip=1 && rm -f
 RUN ls /opt/app/
 EXPOSE 8899
 
-WORKDIR /app
+WORKDIR /opt/app
 
-ENTRYPOINT ["/app/bin/dcos.js"]
+ENTRYPOINT ["/opt/app/bin/dcos.js"]
