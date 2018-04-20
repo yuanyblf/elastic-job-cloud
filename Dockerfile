@@ -8,7 +8,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF
 RUN apt-get update
 RUN apt-get install --assume-yes mesos python-software-properties curl default-jdk
 
-ADD elastic-job-cloud-scheduler/target/*.tar.gz /tmp/app.tar.gz
+COPY elastic-job-cloud-scheduler/target/elastic*.tar.gz /tmp/app.tar.gz
 RUN mkdir -p /opt/app && tar -xvf /tmp/app.tar.gz -C /opt/app --strip=1
 
 EXPOSE 8899
