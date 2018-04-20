@@ -1,5 +1,7 @@
 FROM ubuntu:14.04
 
+MAINTAINER Mesosphere <support@mesosphere.io>
+
 ## DEPENDENCIES ##
 RUN echo "deb http://repos.mesosphere.io/ubuntu/ trusty main" > /etc/apt/sources.list.d/mesosphere.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF
