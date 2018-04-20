@@ -1,9 +1,17 @@
-FROM garland/mesosphere-docker-mesos-master
+FROM ubuntu:14.04
+MAINTAINER sam yuan <sam.yuan@aliyun.com>
 
-COPY elastic-job-cloud-scheduler/target/*.tar.gz /tmp
+## DEPENDENCIES ##
+RUN echo "deb http://repos.mesosphere.io/ubuntu/ trusty main" > /etc/apt/sources.list.d/mesosphere.list
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF
+RUN apt-get update
+RUN apt-get install --assume-yes mesos python-software-properties curl default-jdk
 
-RUN mkdir -p /app && tar -xvf /tmp/*.tar.gz --strip=1  -C /app  && rm -f /tmp/*.tar.gz
-
+## MARATHON ##
+COPY elastic-job-cloud-scheduler/target/*.tar.gz /tmp/app.tar.gz
+RUN mkdir -p /opt/marathon && tar xzf /tmp/marathon.tgz -C /opt/marathon --strip=1 && rm -f /tmp/marathon.tgz
+RUN mkdir -p /app && tar -xvf /tmp/app.tar.gz -C /app --strip=1 && rm -f /tmp/app.tar.gz
+RUN ls /app/
 EXPOSE 8899
 
 WORKDIR /app
